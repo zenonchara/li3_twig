@@ -33,22 +33,22 @@ class Twig extends \lithium\console\Command {
 
 		$this->out('Starting cache flush.');
 
-		if (is_dir($dir)) {
-			$this->out('Cache folder found : ' . $dir);
-
-			if (is_dir($trash)) {
-				$this->out('Old trash folder found (previous command failure possible), deleting it...');
-				$this->_rrmdir($trash);
-			}
-
-			$this->out('Moving cache folder to temporary location ...');
-			rename($dir, $trash);
-
-			$this->out('Deleting temporary cache location...');
-			$success = $this->_rrmdir($trash);
-		} else {
-			$this->error('Cache folder not found.');
+		if (!is_dir($dir)) {
+			return $this->error('Cache folder not found... exiting.');
 		}
+
+		$this->out('Cache folder found : ' . $dir);
+
+		if (is_dir($trash)) {
+			$this->out('Old trash folder found (previous command failure possible), deleting it...');
+			$this->_rrmdir($trash);
+		}
+
+		$this->out('Moving cache folder to temporary location...');
+		rename($dir, $trash);
+
+		$this->out('Deleting temporary cache location...');
+		$success = $this->_rrmdir($trash);
 
 		if (!$success) {
 			return $this->error('Error while deleting Twig template cache.');
