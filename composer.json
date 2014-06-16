@@ -1,0 +1,6 @@
+{
+      "name" : "unionofrad/li3_twig",
+      "type" : "lithium-library",
+      "description" : "Lithium Twig integration",
+      "license" : "MIT"
+}
