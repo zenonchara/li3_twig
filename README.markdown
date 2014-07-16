@@ -2,10 +2,15 @@
 
 Enables [Twig](http://twig.sensiolabs.org/) support for the [Lithium PHP Framework](https://github.com/UnionOfRAD/lithium).
 
-## Installation
-
-1. Clone the repository in your lithium libraries folder.
-2. Init and update the git submodules to retreive a copy of Twig.
+## Composer Installation
+```
+composer require unionofrad/li3_twig
+```
+```
+"require": {
+	"unionofrad/li3_twig": "dev-master"
+}
+```
 
 ## Usage
 
@@ -30,6 +35,14 @@ Libraries::add('li3_twig', array(
 
 ```
 $this->_render['type'] = 'twig';
+```
+
+```
+Router::connect('/foobar', array(
+	'controller' => 'Pages',
+	'action' => 'index',
+	'type' => 'twig',
+));
 ```
 
 From your controller, return arrays (as you normally would) with properties that should be accessible in the Twig template.
