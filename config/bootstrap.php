@@ -7,16 +7,6 @@ use lithium\net\http\Media;
  */
 define('LI3_TWIG_PATH', dirname(__DIR__));
 
-
-/**
- * Add the Twig libraries
- */
-Libraries::add('Twig', array(
-	'path' => LI3_TWIG_PATH . '/libraries/Twig/lib/Twig',
-	'prefix' => 'Twig_',
-	'loader' => 'Twig_Autoloader::autoload',
-));
-
 /**
  * Register the Twig media type.
  * The default renderer is still accessible if needed. (default exception handling for example).
