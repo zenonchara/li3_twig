@@ -180,6 +180,14 @@ class Twig extends \lithium\template\view\Renderer {
 		$config = Libraries::get('app');
 		return $config['resources'] . Twig::CACHE_PATH;
 	}
+
+	public function partial($template, array $data = array(), array $options = array()){
+		$defaults = array(
+			'type' => 'twig'
+		);
+		return parent::_render('element', $template, $data, $options + $defaults);
+	}
+
 }
 
 ?>
